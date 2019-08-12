@@ -1,0 +1,224 @@
+[
+  {
+    "route_id": "CompositeDiscoveryClient_HJCONFIG",
+    "route_definition": {
+      "id": "CompositeDiscoveryClient_HJCONFIG",
+      "predicates": [
+        {
+          "name": "Path",
+          "args": {
+            "pattern": "/hjconfig/**"
+          }
+        }
+      ],
+      "filters": [
+        {
+          "name": "RewritePath",
+          "args": {
+            "regexp": "/hjconfig/(?<remaining>.*)",
+            "replacement": "/${remaining}"
+          }
+        }
+      ],
+      "uri": "lb://HJCONFIG",
+      "order": 0
+    },
+    "order": 0
+  },
+  {
+    "route_id": "CompositeDiscoveryClient_GATEWAY",
+    "route_definition": {
+      "id": "CompositeDiscoveryClient_GATEWAY",
+      "predicates": [
+        {
+          "name": "Path",
+          "args": {
+            "pattern": "/gateway/**"
+          }
+        }
+      ],
+      "filters": [
+        {
+          "name": "RewritePath",
+          "args": {
+            "regexp": "/gateway/(?<remaining>.*)",
+            "replacement": "/${remaining}"
+          }
+        }
+      ],
+      "uri": "lb://GATEWAY",
+      "order": 0
+    },
+    "order": 0
+  },
+  {
+    "route_id": "CompositeDiscoveryClient_HJADMIN",
+    "route_definition": {
+      "id": "CompositeDiscoveryClient_HJADMIN",
+      "predicates": [
+        {
+          "name": "Path",
+          "args": {
+            "pattern": "/hjadmin/**"
+          }
+        }
+      ],
+      "filters": [
+        {
+          "name": "RewritePath",
+          "args": {
+            "regexp": "/hjadmin/(?<remaining>.*)",
+            "replacement": "/${remaining}"
+          }
+        }
+      ],
+      "uri": "lb://HJADMIN",
+      "order": 0
+    },
+    "order": 0
+  },
+  {
+    "route_id": "CompositeDiscoveryClient_SERVICEA",
+    "route_definition": {
+      "id": "CompositeDiscoveryClient_SERVICEA",
+      "predicates": [
+        {
+          "name": "Path",
+          "args": {
+            "pattern": "/servicea/**"
+          }
+        }
+      ],
+      "filters": [
+        {
+          "name": "RewritePath",
+          "args": {
+            "regexp": "/servicea/(?<remaining>.*)",
+            "replacement": "/${remaining}"
+          }
+        }
+      ],
+      "uri": "lb://SERVICEA",
+      "order": 0
+    },
+    "order": 0
+  },
+  {
+    "route_id": "CompositeDiscoveryClient_HJEUREKA",
+    "route_definition": {
+      "id": "CompositeDiscoveryClient_HJEUREKA",
+      "predicates": [
+        {
+          "name": "Path",
+          "args": {
+            "pattern": "/hjeureka/**"
+          }
+        }
+      ],
+      "filters": [
+        {
+          "name": "RewritePath",
+          "args": {
+            "regexp": "/hjeureka/(?<remaining>.*)",
+            "replacement": "/${remaining}"
+          }
+        }
+      ],
+      "uri": "lb://HJEUREKA",
+      "order": 0
+    },
+    "order": 0
+  },
+  {
+    "route_id": "CompositeDiscoveryClient_SHRPUB",
+    "route_definition": {
+      "id": "CompositeDiscoveryClient_SHRPUB",
+      "predicates": [
+        {
+          "name": "Path",
+          "args": {
+            "pattern": "/shrpub/**"
+          }
+        }
+      ],
+      "filters": [
+        {
+          "name": "RewritePath",
+          "args": {
+            "regexp": "/shrpub/(?<remaining>.*)",
+            "replacement": "/${remaining}"
+          }
+        }
+      ],
+      "uri": "lb://SHRPUB",
+      "order": 0
+    },
+    "order": 0
+  },
+  {
+    "route_id": "r1",
+    "route_definition": {
+      "id": "r1",
+      "predicates": [
+        {
+          "name": "Path",
+          "args": {
+            "_genkey_0": "/gapi/demoservice/**"
+          }
+        }
+      ],
+      "filters": [
+        {
+          "name": "RewritePath",
+          "args": {
+            "_genkey_0": "/gapi/demoservice/(?<remaining>.*)",
+            "_genkey_1": "/$\\{remaining}"
+          }
+        },
+        {
+          "name": "AddResponseHeader",
+          "args": {
+            "_genkey_0": "X-Response-Default-Foo",
+            "_genkey_1": "Default-Bar"
+          }
+        }
+      ],
+      "uri": "lb://servicea",
+      "order": 0
+    },
+    "order": 0
+  },
+  {
+    "route_id": "r2",
+    "route_definition": {
+      "id": "r2",
+      "predicates": [
+        {
+          "name": "Path",
+          "args": {
+            "_genkey_0": "/gapi/shp/**"
+          }
+        }
+      ],
+      "filters": [
+        {
+          "name": "RewritePath",
+          "args": {
+            "_genkey_0": "/gapi/shp/(?<remaining>.*)",
+            "_genkey_1": "/$\\{remaining}"
+          }
+        },
+        {
+          "name": "AddResponseHeader",
+          "args": {
+            "_genkey_0": "X-Response-Default-Foo",
+            "_genkey_1": "Default-Bar"
+          }
+        }
+      ],
+      "uri": "lb://SHRPUB",
+      "order": 0
+    },
+    "order": 0
+  }
+]

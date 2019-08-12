@@ -1,0 +1,46 @@
+server:
+  port: 7009
+
+spring:
+  application:
+    name: ServiceA
+  #单机版
+  redis:
+    database : 0
+    host: 192.168.122.108
+    password: abc123
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1ms
+        min-idle: 0
+      shutdown-timeout: 100ms
+
+beetl-beetlsql:
+  dev: true #默认是true,向控制台输出执行时候的sql，参数，执行时间，以及执行的位置，每次修改sql文件的时候，自动检测sql文件修改
+beetlsql:
+  sqlPath: /sql
+  basePackage: com.hjyd
+  daoSuffix: Dao #默认为Dao
+#  dbStyle: org.beetl.sql.core.db.MySqlStyle #数据库风格，默认是org.beetl.sql.core.db.MySqlStyle，其他还有 OracleStyle，PostgresStyle,SqlServerStyle,DB2SqlStyle,SQLiteStyle,H2Style
+
+logging:
+#  pattern:
+  #    console: "%d - %msg%n"
+  file: /tmp/logs/${spring.application.name}/${server.port}/log.log #日志记录文件存放位置，上线时修改为服务器的绝对路径 /usr/log
+  level:
+    com.hjyd: error
+#ftp:
+#  host: ftp.ce   #FTP 服务器 ip
+#  port: 21
+#  userName: apply
+#  passWord: abc123
+#  root: /
+#  workDirs: /upload/
+#  maxTotal: 100
+#  minIdle: 2
+#  maxIdle: 5
+#  maxWaitMillis: 3000
+#  uploadFlag: FTP_UPLOAD # LOCAL_UPLOAD 上传到本地服务器
